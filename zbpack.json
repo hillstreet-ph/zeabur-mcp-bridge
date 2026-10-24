@@ -1,0 +1,5 @@
+{
+  "type": "node",
+  "start": "npm start",
+  "port": 8080
+}

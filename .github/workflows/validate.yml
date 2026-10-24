@@ -1,0 +1,16 @@
+name: Build & validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate Node service
+        run: |
+          test -f package.json || (echo "package.json missing" && exit 1)
+          test -f zbpack.json || (echo "zbpack.json missing" && exit 1)
+          node -e "JSON.parse(require('fs').readFileSync('package.json'))"
+          node -e "JSON.parse(require('fs').readFileSync('zbpack.json'))"

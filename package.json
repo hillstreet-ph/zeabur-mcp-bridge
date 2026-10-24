@@ -1,0 +1,17 @@
+{
+  "name": "zeabur-mcp-bridge",
+  "version": "1.0.0",
+  "description": "Hosted HTTP bridge for the Zeabur MCP server, deployable on Zeabur and registrable in Composio as a custom MCP.",
+  "main": "index.js",
+  "scripts": {
+    "start": "mcp-proxy --host 0.0.0.0 --port ${PORT:-8080} -- npx -y @zeabur/mcp-server",
+    "start:local": "ZEABUR_TOKEN=$ZEABUR_TOKEN npm run start"
+  },
+  "dependencies": {
+    "@zeabur/mcp-server": "latest",
+    "mcp-proxy": "latest"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
